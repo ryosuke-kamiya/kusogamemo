@@ -9,7 +9,7 @@ const Login = () => {
         <div>
             <h2>ログイン</h2>
             <button onClick={() => {
-                    dispatch(signIn())
+                    // dispatch(signIn())
                 }
 
                 }>ろぐいんする</button>

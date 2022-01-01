@@ -1,9 +1,10 @@
 export const SIGN_IN = "SIGN_IN";
-export const signInAction = (userState: { isSignedIn?:boolean; uid: any; username: any; }) => {
+export const signInAction = (userState: { isSignedIn?:boolean; role: string; uid: any; username: any; }) => {
     return{
         type: "SIGN_IN",
         payload: {
             isSignedIn: true,
+            role: userState.role,
             uid: userState.uid,
             username: userState.username
         }

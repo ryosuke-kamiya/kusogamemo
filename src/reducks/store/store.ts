@@ -10,8 +10,9 @@ import thunk from "redux-thunk";
 //Import reducers
 // import { ProductsReducer } from "../products/reducers";
 import { UsersReducer } from "../users/reducers";
+import { History } from "history";
 
-export default function createStore(history:any) {
+export default function createStore(history: History<unknown>) {
     return reduxCreateStore(
         combineReducers({
             router: connectRouter(history),
