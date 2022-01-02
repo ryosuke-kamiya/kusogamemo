@@ -3,6 +3,7 @@ import {TextInput, PrimaryButton} from "../atoms";
 import { TextFieldProps } from "../atoms/TextInput";
 import { signUp } from "../../reducks/users/operations";
 import { useDispatch } from "react-redux";
+import { push } from "connected-react-router";
 
 const SignUp = (props: TextFieldProps) => {
 
@@ -56,6 +57,7 @@ const SignUp = (props: TextFieldProps) => {
             label={"アカウントを登録する"}
             onClick={() => dispatch(signUp(username, email, password, confirmPassword))}
         />
+        <p onClick={()=>dispatch(push('/signIn'))}>アカウントをお持ちの方はこちら</p>
     </div>
 </div>
     )

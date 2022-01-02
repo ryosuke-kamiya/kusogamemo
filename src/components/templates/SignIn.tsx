@@ -3,6 +3,8 @@ import {TextInput, PrimaryButton} from "../atoms";
 import { TextFieldProps } from "../atoms/TextInput";
 import { signIn } from "../../reducks/users/operations";
 import { useDispatch } from "react-redux";
+import { push } from "connected-react-router";
+
 
 const SignIn = (props: TextFieldProps) => {
 
@@ -39,6 +41,8 @@ const SignIn = (props: TextFieldProps) => {
             label={"サインイン"}
             onClick={() => dispatch(signIn(email, password))}
         />
+        <p onClick={()=>dispatch(push('/signUp'))}>アカウント登録はこちら</p>
+        <p onClick={()=>dispatch(push('/signIn/reset'))}>パスワードを忘れた方はこちら</p>
     </div>
 </div>
     )
