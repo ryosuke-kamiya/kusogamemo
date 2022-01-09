@@ -1,7 +1,7 @@
 const initialState = {
-    // products:{
-
-    // },
+    games:{
+        list: [],
+    },
     users: {
         isSignedIn: false,
         role: "",

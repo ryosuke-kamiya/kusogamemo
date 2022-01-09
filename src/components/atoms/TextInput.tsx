@@ -7,7 +7,7 @@ export type TextFieldProps = {
     multiline?: boolean;
     required?: boolean;
     rows?: number;
-    value: string;
+    value: string | number;
     type: string;
     onChange: React.ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement>;
 }

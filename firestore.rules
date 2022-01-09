@@ -7,5 +7,9 @@ service cloud.firestore {
       allow read: if request.auth.uid == userId;
       allow delete: if request.auth.uid == userId;
     }
+    match /games/{gameId}{
+      allow read: if request.auth.uid != null;
+      allow create: if request.auth.uid != null;
+    }
   }
 }
