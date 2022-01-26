@@ -6,6 +6,7 @@ import {
 	Reset,
 	GameEdit,
 	GameList,
+	GameDetail,
 } from "./components/templates";
 import Auth from "./Auth";
 
@@ -18,7 +19,8 @@ const Router = () => {
 			{/* ログイン後に表示したいページ↓ */}
 			<Auth>
 				<Route exact path={"(/)?"} component={GameList} />
-				<Route path={"/game/edit(/:id)?"} component={GameEdit} />
+				<Route exact path={"/game/edit(/:id)?"} component={GameEdit} />
+				<Route path={"/game/:id"} component={GameDetail} />
 			</Auth>
 			{/* <Route path={"/posts/:id"} component={Post}/> */}
 		</Switch>
