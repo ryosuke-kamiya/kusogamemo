@@ -1,17 +1,23 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { TextInput, SelectBox, PrimaryButton } from "../atoms";
 import { saveGame } from "../../reducks/games/operations";
 import { db } from "../../firebase";
+import { getUserId } from "../../reducks/users/selectors";
+import ImageArea from "../organisms/ImageArea";
 
 const GameEdit = () => {
 	const dispatch = useDispatch();
 	let id = window.location.pathname.split("/game/edit")[1];
-
+console.log(id)
 	//idが入っていた場合、/idとなるため
-	if (id !== "") {
+	if (id !== '' && id !== undefined) {
 		id = id.split("/")[1];
 	}
+
+	const selector: any = useSelector((state) => state)
+	const userId = getUserId(selector)
+
 
 	const [title, setTitle] = useState(String);
 	const [rule, setRule] = useState(String);
@@ -70,7 +76,7 @@ const GameEdit = () => {
 	];
 
 	useEffect(() => {
-		if (id !== "") {
+		if (id !== "" && id !== undefined) {
 			db.collection("games")
 				.doc(id)
 				.get()
@@ -90,6 +96,7 @@ const GameEdit = () => {
 	return (
 		<section>
 			<h2>ゲーム登録・編集</h2>
+			<ImageArea/>
 			<TextInput
 				value={title}
 				type={"text"}
@@ -153,7 +160,7 @@ const GameEdit = () => {
 				<PrimaryButton
 					onClick={() =>
 						dispatch(
-							saveGame(id, title, rule, win, minNum, maxNum, place, genre)
+							saveGame(id, title, rule, win, minNum, maxNum, place, genre, userId)
 						)
 					}
 					label={"ゲームを保存"}

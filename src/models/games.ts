@@ -1,9 +1,10 @@
 export type GameType = {
-	title: String;
-	rule: String;
-	win: String;
+	title: string;
+	rule: string;
+	win: string;
 	minNum: Number;
 	maxNum: Number;
-	place: String;
-	genre: String;
+	place: string;
+	genre: string;
+	userId: string;
 };

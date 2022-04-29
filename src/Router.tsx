@@ -19,10 +19,10 @@ const Router = () => {
 			{/* ログイン後に表示したいページ↓ */}
 			<Auth>
 				<Route exact path={"(/)?"} component={GameList} />
-				<Route exact path={"/game/edit(/:id)?"} component={GameEdit} />
-				<Route path={"/game/:id"} component={GameDetail} />
+				{/* TODO：ログインしなくても表示できるようにする */}
+				<Route exact path={"/game/:id"} component={GameDetail} />
+				<Route path={"/game/edit(/:id)?"} component={GameEdit} />
 			</Auth>
-			{/* <Route path={"/posts/:id"} component={Post}/> */}
 		</Switch>
 	);
 };

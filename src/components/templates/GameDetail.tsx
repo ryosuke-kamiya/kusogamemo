@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { db } from "../../firebase";
 import { GameType } from "../../models/games";
+import HTMLReactParser from "html-react-parser";
 
-const returnCodeToBr = (text) => {
+const returnCodeToBr = (text: string) => {
 	if (text === "") {
 		return text;
 	} else {
@@ -12,27 +13,29 @@ const returnCodeToBr = (text) => {
 };
 
 const GameDetail = () => {
-	const selector = useSelector((state) => state);
+	const selector: any = useSelector((state) => state);
 	const path = selector.router.location.pathname;
 	const id = path.split("/game/")[1];
 
-	const [game, setGame] = useState();
+	const [game, setGame] = useState<any>();
 
 	useEffect(() => {
 		db.collection("games")
 			.doc(id)
 			.get()
 			.then((doc) => {
-				const data = doc.data();
+				const data: any = doc.data();
 				setGame(data);
 			});
 	}, []);
 
 	return (
-		<div>
-			<h1>ゲーム詳細</h1>
-			<p>{returnCodeToBr(game.description)}</p>
-		</div>
+		game ? (
+			<div>
+				<h1>ゲーム詳細</h1>
+				<p>{returnCodeToBr(game.rule)}</p>
+			</div>
+		):null
 	);
 };
 

@@ -1,14 +1,17 @@
 import React from 'react';
+import { Header } from './components/organisms/Header/Header';
 import Router from "./Router";
 
 function App() {
- 
+
   return (
+		<>
+    <Header></Header>
     <main>
-      {/* <Header></Header> */}
       <Router/>
       {/* <Footer></Footer> */}
     </main>
+		</>
   );
 }
 
